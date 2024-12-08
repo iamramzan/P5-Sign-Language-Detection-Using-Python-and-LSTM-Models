@@ -11,7 +11,9 @@ In this project, I developed a sign language detection system by combining keypo
 - TensorFlow/Keras: For building and training the LSTM-based deep learning model.
 
 Project Goal:
+
 To achieve real-time sign language detection using sequences of keypoints.
+
 Key Steps:
 1. Extract keypoints using MediaPipe Holistic.
 2. Train a deep learning LSTM model to recognize patterns in sequences.
