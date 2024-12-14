@@ -51,5 +51,3 @@ Integrate the trained model with a live webcam feed to detect and predict gestur
 ✨ Let’s Collaborate!
 - I’m passionate about improving my projects and learning from the community! 😊
 Have suggestions for enhancing this sign language detection system? Or do you have ideas for creative use cases? Let’s connect! Share your thoughts and feedback in the comments below—I’d love to explore new possibilities together!
-
-<img src="https://github.com/iamramzan/P5-Sign-Language-Detection-Using-Python-and-LSTM-Models/blob/main/Sign%20Language%20Detection.png">
