@@ -1,3 +1,5 @@
+# P9: Sign Language Detection Using Python and LSTM Models
+
 # 1. Install and Import Dependencies
 # Set up your Python environment and install essential libraries such as OpenCV, MediaPipe, NumPy, TensorFlow, and Matplotlib.
 import cv2
@@ -77,7 +79,7 @@ with mp_holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=
     cv2.destroyAllWindows()
 
 
-results
+len(results.left_hand_landmarks.landmark)
 
 
 
@@ -131,7 +133,7 @@ np.load('0.npy')
 DATA_PATH = os.path.join('MP_Data') 
 
 # Actions that we try to detect
-actions = np.array(['hello', 'thanks', 'iloveyou'])
+actions = np.array(['Hi', 'How are you', 'Bye'])
 
 # Thirty videos worth of data
 no_sequences = 30
@@ -267,9 +269,9 @@ model.summary()
 # Test the trained model by predicting gestures from new input data and evaluating its performance.
 res = model.predict(X_test)
 
-actions[np.argmax(res[4])]
+actions[np.argmax(res[3])]
 
-actions[np.argmax(y_test[4])]
+actions[np.argmax(y_test[3])]
 
 # 9. Save Model Weights
 # Save the trained model's weights for future use to avoid retraining from scratch.
@@ -294,28 +296,6 @@ accuracy_score(ytrue, yhat)
 
 # 11. Test in Real-Time Applications
 # Integrate the trained model with a live webcam feed to detect and predict gestures in real-time.
-colors = [(245,117,16), (117,245,16), (16,117,245)]
-def prob_viz(res, actions, input_frame, colors):
-    output_frame = input_frame.copy()
-    for num, prob in enumerate(res):
-        cv2.rectangle(output_frame, (0,60+num*40), (int(prob*100), 90+num*40), colors[num], -1)
-        cv2.putText(output_frame, actions[num], (0, 85+num*40), cv2.FONT_HERSHEY_SIMPLEX, 1, (255,255,255), 2, cv2.LINE_AA)
-        
-    return output_frame
-
-plt.figure(figsize=(18,18))
-plt.imshow(prob_viz(res, actions, image, colors))
-
-sequence.reverse()
-
-len(sequence)
-
-sequence.append('def')
-
-sequence.reverse()
-
-sequence[-30:]
-
 # 1. New detection variables
 sequence = []
 sentence = []
@@ -358,9 +338,6 @@ with mp_holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=
 
             if len(sentence) > 5: 
                 sentence = sentence[-5:]
-
-            # Viz probabilities
-            image = prob_viz(res, actions, image, colors)
             
         cv2.rectangle(image, (0,0), (640, 40), (245, 117, 16), -1)
         cv2.putText(image, ' '.join(sentence), (3,30), 
@@ -378,14 +355,3 @@ with mp_holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=
 
 cap.release()
 cv2.destroyAllWindows()  
-
-res[np.argmax(res)] > threshold
-
-(num_sequences,30,1662)
-
-model.predict(np.expand_dims(X_test[0], axis=0))
-
-
-
-
-
